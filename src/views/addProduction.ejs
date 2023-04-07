@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <style>
+    input[type=text1] {
+      border: 2px solid red;
+    }
+  </style>
+  <%- include('../views/partials/links'); %>
+    <link rel="stylesheet" href="/css/validation.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-primary navbar-light">
+    <div class="container mt-1">
+      <h2 class="text-white">PROD</h2>
+      <button class="navbar-toggler btn btn-secondary" type="button" data-toggle="collapse"
+        data-target="#collapsenavbar">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="collapsenavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item px-2">
+            <a href="/searchProduction" class="nav-link text-white"> VIEW PRODUCTION </a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/week" class="nav-link text-white"> FORECASTING </a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/companies" class="nav-link text-white"> HOME </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+    <!-- page content -->
+    <div class="container mt-5">
+      <h2 class="text-center">Add your production here</h2>
+      <div class="d-flex justify-content-center">
+        <form class="mt-4 col-md-6" id="addtrip" action="/productions" method="post">
+          
+          <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" class="form-control" id="date" name="date">
+          </div>
+
+         <%  product.forEach(products=> { %>
+        
+            <div class="form-group">
+            
+              <div class="row mx-md-n2">
+                <div class="col px-md-2">
+                  <input type="text" class="form-control" id="<%=(products.trim())%> " name="<%=(products.trim())%>" value="<%= (products.trim()) %>" disabled>
+                </div>
+                <div class="col px-2">
+                  <input type="text" class="form-control" id="<%=  (products.trim()) %> " name="<%= (products.trim()) %>">
+                </div>
+              </div>
+            
+            </div>
+
+         <% }) %>
+          <br />
+
+          <div class="form-group d-flex justify-content-center">
+            <input type="submit" class="btn btn-primary btn-info mt-2" value="SUBMIT">
+            <button class="btn btn-danger mt-2 ml-2"><a href="/searchProduction" class="text-light"> BACK </a></button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<html>
+
+<head>
+  <style>
+    input[type=text1] {
+      border: 2px solid red;
+    }
+  </style>
+  <%- include('../views/partials/links'); %>
+    <link rel="stylesheet" href="/css/validation.css" />
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-primary navbar-light">
+    <div class="container mt-1">
+      <h2 class="text-white">PROD</h2>
+      <button class="navbar-toggler btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapsenavbar">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+  
+      <div class="collapse navbar-collapse text-center" id="collapsenavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item px-2">
+            <a href="/calculationView" class="nav-link text-white"> ADD CALCULATION </a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/companies" class="nav-link text-white"> HOME </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <% function formatDate(dateObject) { let d=new Date(dateObject); let day=d.getDate(); let month=d.getMonth() + 1; let
+    year=d.getFullYear(); if (day < 10) { day="0" + day; } if (month < 10) { month="0" + month; } let date=year + "-" +
+    month + "-" + day; return date; };%>
+
+  <!-- page content -->
+  <div class="container">
+
+    <div class="d-flex justify-content-center">
+      <form class="mt-3 col-md-6" id="addtrip">
+
+        <div class="form-group">
+          <label for="text">Date</label>
+          <input type="text" class="form-control" id="date" name="date" value="<%= formatDate(users.date) %>" disabled>
+        </div>
+
+        <div class="form-group">
+          
+            <div class="row mx-md-n2">
+              <div class="col px-md-2">
+                <label for="date">Labour Input</label>
+                <input type="text" class="form-control" id="date" name="date" value="<%= users.labourInput %>" disabled>
+              </div>
+              <div class="col px-2">
+                <label for="time">Material Input</label>
+                <input type="text" class="form-control" id="time" name="time" value="<%= users.materialInput %>" disabled>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="form-group">
+          
+            <div class="row mx-md-n2">
+              <div class="col px-md-2">
+                <label for="date">Capital Input</label>
+                <input type="text" class="form-control" id="date" name="date" value="<%= users.capitalInput %>" disabled>
+              </div>
+              <div class="col px-2">
+                <label for="time">Energy Input</label>
+                <input type="text" class="form-control" id="time" name="time" value="<%= users.energyInput %>" disabled>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="form-group">
+          <label for="text">Total Output</label>
+          <input type="text" class="form-control" id="date" name="date" value="<%= users.totalOutput %>" disabled>
+        </div>
+
+        <div class="form-group">
+          
+            <div class="row mx-md-n2">
+              <div class="col px-md-2">
+                <label for="date">Labour Productivity</label>
+              <%  if(users.labourProductivity < 1) { %>
+                <input type="text1" class="form-control" id="date" name="date" value="<%= users.labourProductivity %>" disabled>
+              <%  } else { %>
+                  <input type="text" class="form-control" id="date" name="date" value="<%= users.labourProductivity %>" disabled>
+              <%  } %>
+              </div>
+              <div class="col px-2">
+                <label for="time">Material Productivity</label>
+                <% if(users.materialProductivity < 1) { %>
+                  <input type="text1" class="form-control" id="date" name="date" value="<%= users.materialProductivity %>" disabled>
+                  <% } else { %>
+                    <input type="text" class="form-control" id="date" name="date" value="<%= users.materialProductivity %>" disabled>
+                    <% } %>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="form-group">
+         
+            <div class="row mx-md-n2">
+              <div class="col px-md-2">
+                <label for="date">Capital Productivity</label>
+                <% if(users.capitalProductivity < 1) { %>
+                  <input type="text1" class="form-control" id="date" name="date" value="<%= users.capitalProductivity %>" disabled>
+                  <% } else { %>
+                    <input type="text" class="form-control" id="date" name="date" value="<%= users.capitalProductivity %>" disabled>
+                    <% } %>
+              </div>
+              <div class="col px-2">
+                <label for="time">Energy Productivity</label>
+                <% if(users.energyProductivity < 1) { %>
+                  <input type="text1" class="form-control" id="date" name="date" value="<%= users.energyProductivity %>" disabled>
+                  <% } else { %>
+                    <input type="text" class="form-control" id="date" name="date" value="<%= users.energyProductivity %>" disabled>
+                    <% } %>
+              </div>
+            </div>
+          
+        </div>
+
+        <div class="form-group">
+          <label for="text">Total Productivity</label>
+          <% if(users.totalProductivity < 1) { %>
+            <input type="text1" class="form-control" id="date" name="date" value="<%= users.totalProductivity %>" disabled>
+            <% } else { %>
+              <input type="text" class="form-control" id="date" name="date" value="<%= users.totalProductivity %>" disabled>
+              <% } %>
+        </div>
+
+        <div class="form-group">
+          
+            <button class="btn btn-danger mt-2 ml-2"><a href="/calculationSearch" class="text-light"> BACK </a></button>
+          </div>
+        
+      </form>
+    </div>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+</body>
+
+</html>

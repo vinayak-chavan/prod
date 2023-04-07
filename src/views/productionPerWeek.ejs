@@ -1,0 +1,73 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/css/blogcss.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg bg-primary navbar-light">
+    <div class="container mt-1">
+      <h2 class="text-white">PROD</h2>
+      <button class="navbar-toggler btn btn-secondary" type="button" data-toggle="collapse"
+        data-target="#collapsenavbar">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="collapsenavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item px-2">
+            <a href="/productionView" class="nav-link text-white"> ADD PRODUCTION </a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/companies" class="nav-link text-white"> HOME </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <section class="pt-5 justify-content-center position-relative ">
+    <div class="container">
+      <div class="row justify-content-center">
+        
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Week Number</th>
+              <th scope="col">Production</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% users.forEach(user=> { %>
+            <tr>
+              <td><%= user._id %></td>
+              <% delete user._id %><td>
+              
+              <% Object.keys(user).forEach(key=> { %>
+              <%= key %>
+                <%= user[key] %>
+                <% }) %>
+                </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+        
+          
+   
+      </div>
+    </div>
+  </section>
+
+</body>
+
+</html>

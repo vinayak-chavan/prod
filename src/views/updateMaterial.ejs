@@ -1,0 +1,74 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="/css/blogcss.css" />
+  <%- include('../views/partials/links'); %>
+
+</head>
+
+<body>
+
+  <!-- header part -->
+
+  <nav class="navbar navbar-expand-lg bg-primary navbar-light">
+    <div class="container mt-1">
+      <h2 class="text-white">PROD</h2>
+      <button class="navbar-toggler btn btn-secondary" type="button" data-toggle="collapse"
+        data-target="#collapsenavbar">
+        <span class="navbar-toggler-icon "></span>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="collapsenavbar">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item px-2">
+            <a href="/rawMaterialAddView" class="nav-link text-white"> VIEW MATERIALS </a>
+          </li>
+          <li class="nav-item px-2">
+            <a href="/companies" class="nav-link text-white"> HOME </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- page content -->
+
+  <div class="container mt-5">
+    <h2 class="text-center">Available Raw Material List</h2>
+    <div class="d-flex justify-content-center">
+      <form class="col-md-6 mt-4" id="profile" action="/material" method="post">
+
+        <% let obj = user.rowMaterial %>
+        <% obj %>
+        <% Object.keys(obj).forEach(key => { %>
+
+          <div class="form-group">
+            <div class="row mx-md-n2">
+              <div class="col px-md-2">
+                <input type="text" class="form-control" id="city" name="city" value="<%= key %>" required>
+              </div>
+              <div class="col px-2">
+                <input type="text" class="form-control" id="<%= key %>" name="<%= key %>" value="<%= obj[key] %>">
+              </div>
+            </div>
+          </div>
+
+        <% }) %>
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-info mt-2" value="SUBMIT">
+              <button class="btn btn-danger mt-2 ml-2"><a href="/rawMaterialAddView" class="text-light"> BACK </a></button>
+            </div>
+      </form>
+    </div>
+
+
+    <!-- <%- include('../views/partials/footer'); %> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+
+</body>
+
+</html>

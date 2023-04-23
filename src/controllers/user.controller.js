@@ -90,7 +90,7 @@ const logout = async (req, res) => {
 const updateCompany = async (req, res) => {
     try {
         let userId = req.user._id;
-
+        console.log(req.file.location);
         const companyDetails = await user.findByIdAndUpdate(userId, {
             name: req.body.name,
             email: req.body.email,
@@ -99,7 +99,7 @@ const updateCompany = async (req, res) => {
             city: req.body.city,
             state: req.body.state,
             products: req.body.products,
-            photo: "/uploads/"+req.file.filename,
+            photo: req.file.location,
         });
         console.log(req.file.filename);
         res.redirect('/profile');

@@ -5,7 +5,7 @@ const { errorResponse } = require('../utils');
 const auth = async (req, res, next) => {
     let token = req.cookies.accessToken;
     try {
-      let payload = jwt.verify(token, "secret");
+      let payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
       let matchedUser = await user.findById(payload.id, "-password -__v");
       if (!matchedUser) {
         return errorResponse(req, res, "User Not Found", 404);
@@ -14,8 +14,7 @@ const auth = async (req, res, next) => {
 
       next();
     } catch (error) {
-      res.redirect('/');
-      // return errorResponse(req, res, 'Unauthorized!!!', 401);
+      return errorResponse(req, res, 'Unauthorized!!!', 401);
     }
 }
 

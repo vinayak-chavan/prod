@@ -2,7 +2,6 @@
 
 <head>
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="/css/style.css" />
     <title>Sign in & Sign up Form</title>
 </head>
@@ -14,8 +13,8 @@
                 <form class="sign-in-form" action="/login" method="post" id="sign-in">
                     <h2 class="title">Sign in</h2>
                     <div class="input-field">
-                        <i class="fas fa-envelope"></i>
-                        <input type="text" name="email" placeholder="Email" required />
+                        <i class="fas fa-user"></i>
+                        <input type="text" name="emailID" placeholder="Email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -27,11 +26,15 @@
                     <h2 class="title">Sign up</h2>
                     <div class="input-field">
                         <i class="fas fa-user"></i>
-                        <input type="text" name="name" placeholder="Username" required />
+                        <input type="text" name="username" placeholder="Name" required />
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-phone-alt"></i>
+                        <input type="text" name="phoneno" placeholder="Phone Number" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-envelope"></i>
-                        <input type="text" name="email" placeholder="Email" required />
+                        <input type="email" name="emailID" placeholder="Email" required />
                     </div>
                     <div class="input-field">
                         <i class="fas fa-lock"></i>
@@ -83,7 +86,6 @@
     <script>
         jQuery("#sign-in").validate({
             rules: {
-                role: "required",
                 emailID: {
                     required: true,
                     email: true
@@ -94,7 +96,6 @@
                 },
             },
             messages: {
-                role: "Please select role",
                 emailID: {
                     required: "Please enter email",
                     email: "Please enter valid email"
@@ -111,7 +112,12 @@
 
         jQuery("#sign-up").validate({
             rules: {
-                role: "required",
+                username: "required",
+                phoneno: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 10,
+                },
                 emailID: {
                     required: true,
                     email: true
@@ -122,7 +128,12 @@
                 },
             },
             messages: {
-                role: "Please select role",
+                username: "Please enter username",
+                phoneno: {
+                    required: "Please enter phone number",
+                    minlength: "Please enter valid number",
+                    maxlength: "Please enter valid number",
+                },
                 emailID: {
                     required: "Please enter email",
                     email: "Please enter valid email"

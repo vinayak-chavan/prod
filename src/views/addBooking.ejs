@@ -1,0 +1,126 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/blogcss.css" />
+    
+    <%- include('../views/partials/links'); %>  
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+</head>
+
+<body>
+
+                <!-- header part -->
+
+  <nav class="navbar navbar-expand-lg bg-danger navbar-light">
+        <div class="container mt-1">
+            <h2 class="text-white">Red<b>BUS</b></h2>
+            <button class="navbar-toggler btn btn-secondary" type="button" data-toggle="collapse"
+                data-target="#collapsenavbar">
+                <span class="navbar-toggler-icon "></span>
+            </button>
+
+            <div class="collapse navbar-collapse text-center" id="collapsenavbar">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item px-2">
+                        <a href="/search" class="nav-link text-white"> HOME </a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a href="/logout" class="nav-link text-white"> LOGOUT </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+                    <!-- page content -->
+
+
+    <% function formatDate(dateObject) { 
+      let d=new Date(dateObject); 
+      let day=d.getDate(); 
+      let month=d.getMonth() + 1; 
+      let year=d.getFullYear();
+      if (day < 10) { 
+        day="0" + day; 
+      } 
+      if (month < 10) { 
+        month="0" + month; 
+      }
+      let date=year + "-" + month + "-" + day; return date; 
+    };%>
+  
+
+  <div class="container mt-1">
+    <div class="d-flex justify-content-center">
+      <div class="mt-2 col-md-7">
+        <div class="row main-row-col mt-4">
+          <div class="container ">
+            <div class="row mx-md-n2">
+              <div class="col px-md-2 ml-3">
+                <h5> <%= formatDate(trip.travelDate) %> </h5>            
+                      Price : <%= trip.fareAmount %> <br>
+                      Available Seats : <%= trip.availableSeats.length %> 
+              </div>
+            <div class="col px-2 ml-3">
+              <br>
+              <h6> <%= trip.startingPoint %> - <%= trip.destinationPoint %></h6>
+                   <%= trip.departureTime %> -  <%= trip.reachTime %> <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>             
+
+  <div class="container mt-3">
+            <div class="d-flex justify-content-center">
+                <form class="mt-1 col-md-6" id="addbus" action="/booking/<%= trip._id %>" method="post">
+
+                    <div class="form-group">
+                        <label for="seats">Number of Seats</label>
+                        <input type="number" min=1 class="form-control" id="seats" name="seats" placeholder="Seats" onChange="myFunction()" required>
+                    </div>
+      
+                    <div class="form-group" id="availSeats">
+                        <label for="id_label_multiple">Seats Numbers</label>
+                         <select class="js-example-basic-multiple form-control" name="requestedSeats" id="id_label_multiple" multiple="multiple">
+                        
+                        <%
+                          trip.availableSeats.forEach((seat) => { %>
+                            <option class="element" value="<%= seat %>"><%= seat %></option>
+                        <% })
+                        %>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="totalAmount">Total Amount</label>
+                        <input type="text" class="form-control" id="totalAmount" name="totalAmount" placeholder="totalAmount">
+                    </div>
+
+                  <input type="submit" class="btn btn-danger btn-info mt-2" value="ADD">
+                  <button class="btn btn-danger mt-2 ml-2" ><a href="/bus" class="text-light"> CANCEL </a></button>
+
+                </form>
+            </div>
+
+    <%- include('../views/partials/footer'); %>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+  <script>
+    $(".js-example-basic-multiple").select2({
+      width: 'resolve', // need to override the changed default
+      theme: 'classic'
+    });
+
+    function myFunction() {
+      var x = document.getElementById("seats").value;
+      var amount = x * "<%= trip.fareAmount %>";
+      document.getElementById("totalAmount").value =  amount;
+    }
+  </script>
+
+</body>
+
+</html>

@@ -3,57 +3,36 @@ const Schema = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-const userSchema = mongoose.Schema(
-  {
-    name: { 
-      type: "String", 
-      required: true 
-    },
-    email: { 
-      type: "String",   
-      unique: true, 
-      required: true 
-    },
-    password: { 
-      type: "String", 
-      required: true 
-    },
-    photo: {
-      type: "String",
-      default: "https://cdn.pixabay.com/photo/2016/09/02/18/38/factory-1639990_960_720.jpg",
-    },
-    phoneNumber: {
-      type: "string", 
-      trim: true,
-      default: '',
-      required: false 
-    },
-    address: { 
-      type: "string", 
-      trim: true,
-      default: '',
-      required: false 
-    },
-    city: {
-      type: "string", 
-      trim: true,
-      default: '',
-      required: false
-    },
-    state: {
-      type: "string", 
-      trim: true,
-      default: '',
-      required: false
-    },
-    products: {
-      type: "string", 
-      trim: true,
-      default: '',
-      required: false 
-    },
-  }
-);
+const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  phoneno: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  emailID: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  wallet: {
+    type: Number,
+  },
+  role: {
+    type: String,
+    required: true,
+    enum: ["admin", "user"],
+    trim: true,
+  },
+});
 
 userSchema.methods.getToken = function ({ exp, secret }) {
   let token;

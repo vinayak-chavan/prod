@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
-// let url = "mongodb://localhost:27017/chat-app?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
-let url = "mongodb+srv://prod:prod@cluster1.rc7kh6n.mongodb.net/?retryWrites=true&w=majority";
+// local database connection string
+// mongodb://localhost:27017/bus-booking-app?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false
 
 (async () => {
   try {
     await mongoose.connect(
-      url,
+      // "mongodb+srv://vinayak:vinayak@cluster0.mjwtrzs.mongodb.net/bus-booking-app?retryWrites=true&w=majority",
+      "mongodb://localhost:27017/bus-booking-app?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false",
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,

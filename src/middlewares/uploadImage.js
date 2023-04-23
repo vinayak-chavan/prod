@@ -5,8 +5,8 @@ const path = require('path');
 
 const s3 = new S3Client({
     credentials: {
-        accessKeyId: "AKIA5CPF2XTCV6IK2VXX",
-        secretAccessKey: "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"
+        accessKeyId: "AKIA5CPF2XTCQG3ZQHEP",
+        secretAccessKey: "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"
     },
     region: "us-east-1" // this is the region that you select in AWS account
 })

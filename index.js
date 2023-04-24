@@ -1,4 +1,6 @@
 require('./src/db/connection');
+const dotenv = require('dotenv');   
+dotenv.config();
 const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
@@ -17,7 +19,6 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 
 app.use(cookieParser());
-
 app.use("/", userRoutes);
 app.use("/", attendanceRoutes);
 app.use("/", calculationRoutes);

@@ -99,7 +99,7 @@ const updateCompany = async (req, res) => {
             city: req.body.city,
             state: req.body.state,
             products: req.body.products,
-            photo: req.file.location,
+            photo: req.file.path,
         });
         console.log(req.file.filename);
         res.redirect('/profile');

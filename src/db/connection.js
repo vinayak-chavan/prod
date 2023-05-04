@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-// let url = "mongodb://localhost:27017/chat-app?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
-let url = "mongodb+srv://prod:prod@cluster1.rc7kh6n.mongodb.net/?retryWrites=true&w=majority";
+let url = "mongodb://localhost:27017/chat-app?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false";
+// let url = "mongodb+srv://prod:prod@cluster1.rc7kh6n.mongodb.net/?retryWrites=true&w=majority";
 
 (async () => {
   try {
